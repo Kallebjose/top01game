@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#07111f" />
+  <meta name="description" content="TOP 1 — jogo multiplayer de respostas e votação entre amigos." />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <title>TOP 1</title>
+  <link rel="preconnect" href="https://www.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="app" class="app-shell">
+    <header class="topbar">
+      <button id="brandBtn" class="brand" type="button" aria-label="Ir para o início">
+        <span class="brand-mark">1</span>
+        <span>TOP 1</span>
+      </button>
+      <div id="roomBadge" class="room-badge hidden"></div>
+    </header>
+
+    <main class="page">
+      <section id="loadingScreen" class="screen center-screen">
+        <div class="loader" aria-hidden="true"></div>
+        <p class="muted">Conectando ao jogo...</p>
+      </section>
+
+      <section id="setupScreen" class="screen center-screen hidden">
+        <div class="panel setup-panel">
+          <p class="eyebrow">Configuração necessária</p>
+          <h1>Conecte o Firebase</h1>
+          <p class="muted">O projeto está pronto. Falta apenas colar a configuração Web do seu Firebase no arquivo <code>firebase-config.js</code>.</p>
+          <div class="setup-steps">
+            <span>1. Firebase Console → Configurações do projeto → Geral</span>
+            <span>2. Crie/abra um app Web e copie <code>firebaseConfig</code></span>
+            <span>3. Cole em <code>firebase-config.js</code> e recarregue</span>
+          </div>
+          <p id="setupReason" class="error-text"></p>
+        </div>
+      </section>
+
+      <section id="homeScreen" class="screen hidden">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">Multiplayer entre amigos</p>
+            <h1>Pense na melhor resposta. Convença a mesa.</h1>
+            <p class="hero-text">Uma categoria, um critério e uma letra. Todo mundo responde, as opções aparecem anonimamente e o grupo decide qual foi a melhor.</p>
+            <div class="feature-row">
+              <span>45s por resposta</span>
+              <span>3–10 jogadores</span>
+              <span>PC e celular</span>
+            </div>
+          </div>
+
+          <div class="home-actions">
+            <div class="panel">
+              <h2>Criar sala</h2>
+              <label class="field-label" for="createName">Seu nome</label>
+              <input id="createName" class="input" maxlength="20" autocomplete="nickname" placeholder="Ex.: Kalleb" />
+              <button id="createRoomBtn" class="btn btn-primary btn-block" type="button">Criar sala</button>
+            </div>
+
+            <div class="panel">
+              <h2>Entrar em sala</h2>
+              <label class="field-label" for="joinName">Seu nome</label>
+              <input id="joinName" class="input" maxlength="20" autocomplete="nickname" placeholder="Seu nome" />
+              <label class="field-label" for="roomCodeInput">Código</label>
+              <input id="roomCodeInput" class="input code-input" maxlength="6" autocomplete="off" autocapitalize="characters" placeholder="ABC123" />
+              <button id="joinRoomBtn" class="btn btn-secondary btn-block" type="button">Entrar</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="roomScreen" class="screen hidden">
+        <div id="roomContent"></div>
+      </section>
+    </main>
+  </div>
+
+  <div id="toastRegion" class="toast-region" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-database-compat.js"></script>
+  <script src="firebase-config.js"></script>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
